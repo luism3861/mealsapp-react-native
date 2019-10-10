@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 
 const FiltersScreen = props => {
   return (
@@ -12,9 +12,9 @@ const FiltersScreen = props => {
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
-    alignItems: 'center',
     justifyContent: 'center',
-  },
+    alignItems: 'center'
+  }
 });
 
 export default FiltersScreen;

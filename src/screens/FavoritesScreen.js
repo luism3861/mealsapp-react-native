@@ -1,20 +1,19 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import styled from 'styled-components';
 
 const FavoritesScreen = props => {
   return (
-    <View style={styles.screen}>
+    <Container>
       <Text>Favorites Screen!</Text>
-    </View>
+    </Container>
   );
 };
 
-const styles = StyleSheet.create({
-  screen: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const Container = styled.View`
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+`;
+const Text = styled.Text``;
 
 export default FavoritesScreen;

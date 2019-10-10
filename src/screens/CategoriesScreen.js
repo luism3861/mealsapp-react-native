@@ -1,20 +1,41 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {FlatList} from 'react-native';
+import styled from 'styled-components';
 
-const CategoriesScreen = props => {
+import {CATEGORIES} from '../data/dummy-data';
+
+const CategoriesScreen = ({navigation}) => {
+  const renderGridItem = itemData => {
+    return (
+      <Button
+        onPress={() => {
+          navigation.navigate({routeName: 'CategoryMeals'});
+        }}>
+        <View>
+          <Text>{itemData.item.title}</Text>
+        </View>
+      </Button>
+    );
+  };
+
   return (
-    <View style={styles.screen}>
-      <Text>The Categories Screen!</Text>
-    </View>
+    <FlatList
+      keyExtractor={(item, index) => item.id}
+      data={CATEGORIES}
+      renderItem={renderGridItem}
+      numColumns={2}
+    />
   );
 };
 
-const styles = StyleSheet.create({
-  screen: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const Button = styled.TouchableOpacity`
+  flex: 1;
+  margin: 15px;
+  height: 150px;
+`;
+
+const View = styled.View``;
+
+const Text = styled.Text``;
 
 export default CategoriesScreen;

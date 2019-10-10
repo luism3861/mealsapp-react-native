@@ -1,20 +1,36 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import styled from 'styled-components';
 
-const CategoryMealsScreen = props => {
+const CategoryMealScreen = ({navigation}) => {
   return (
-    <View style={styles.screen}>
-      <Text>The Categories Meal Screen!</Text>
-    </View>
+    <Container>
+      <Text>The Category Meal Screen!</Text>
+      <Button
+        title="Go to Details"
+        onPress={() => {
+          navigation.navigate({
+            routeName: 'MealDetail',
+          });
+        }}
+      />
+      <Button
+        title="Go Back"
+        onPress={() => {
+          navigation.pop();
+        }}
+      />
+    </Container>
   );
 };
 
-const styles = StyleSheet.create({
-  screen: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const Container = styled.View`
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+`;
 
-export default CategoryMealsScreen;
+const Text = styled.Text``;
+
+const Button = styled.Button``;
+
+export default CategoryMealScreen;
