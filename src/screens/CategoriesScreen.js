@@ -9,7 +9,9 @@ const CategoriesScreen = ({navigation}) => {
     return (
       <Button
         onPress={() => {
-          navigation.navigate({routeName: 'CategoryMeals'});
+          navigation.navigate('CategoryMeals', {
+            categoryId: itemData.item.id,
+          });
         }}>
         <View>
           <Text>{itemData.item.title}</Text>
