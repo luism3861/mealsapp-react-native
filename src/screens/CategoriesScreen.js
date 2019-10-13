@@ -1,22 +1,21 @@
 import React from 'react';
 import {FlatList} from 'react-native';
-import styled from 'styled-components';
 
 import {CATEGORIES} from '../data/dummy-data';
+import CategoryGridTitle from '../components/CategoryGridTile';
 
 const CategoriesScreen = ({navigation}) => {
   const renderGridItem = itemData => {
     return (
-      <Button
-        onPress={() => {
+      <CategoryGridTitle
+        title={itemData.item.title}
+        color={itemData.item.color}
+        onSelect={() => {
           navigation.navigate('CategoryMeals', {
             categoryId: itemData.item.id,
           });
-        }}>
-        <View>
-          <Text>{itemData.item.title}</Text>
-        </View>
-      </Button>
+        }}
+      />
     );
   };
 
@@ -29,15 +28,5 @@ const CategoriesScreen = ({navigation}) => {
     />
   );
 };
-
-const Button = styled.TouchableOpacity`
-  flex: 1;
-  margin: 15px;
-  height: 150px;
-`;
-
-const View = styled.View``;
-
-const Text = styled.Text``;
 
 export default CategoriesScreen;
