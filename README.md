@@ -1,2 +1,2 @@
 # mealsapp-react-native
-- npm install 
+- you need to install node_modules , npm install
