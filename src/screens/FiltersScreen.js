@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect, useCallback} from 'react';
 import {HeaderButtons, Item} from 'react-navigation-header-buttons';
 import {Switch} from 'react-native';
 import HeaderButton from '../components/HeaderButton';
@@ -18,11 +18,25 @@ const FilterSwitch = props => {
   );
 };
 
-const FiltersScreen = props => {
+const FiltersScreen = ({navigation}) => {
   const [isGlutenFree, setIsGluttenFree] = useState(false);
   const [isLactoseFree, setIsLatoseFree] = useState(false);
   const [isVegan, setIsVegan] = useState(false);
   const [isVegetarian, setIsVegetarian] = useState(false);
+
+  const saveFilters = useCallback(() => {
+    const appliedFilters = {
+      glutenFree: isGlutenFree,
+      lactoseFree: isLactoseFree,
+      vegan: isVegan,
+      Vegetarian: isVegetarian,
+    };
+    console.log(appliedFilters);
+  }, [isGlutenFree, isLactoseFree, isVegan, isVegetarian]);
+
+  useEffect(() => {
+    navigation.setParams({save: saveFilters});
+  }, [saveFilters]);
 
   return (
     <Container>
@@ -66,6 +80,16 @@ FiltersScreen.navigationOptions = navData => {
         />
       </HeaderButtons>
     ),
+    headerRight: (
+      <HeaderButtons HeaderButtonComponent={HeaderButton}>
+        <Item
+          title="Save"
+          iconName="save"
+          color="black"
+          onPress={navData.navigation.getParam('save')}
+        />
+      </HeaderButtons>
+    ),
   };
 };
 
@@ -79,7 +103,7 @@ const FilterContainer = styled.View`
   justify-content: space-between;
   align-items: center;
   width: 80%;
-  margin-vertical:15px;
+  margin-vertical: 15px;
 `;
 
 const Text = styled.Text`
