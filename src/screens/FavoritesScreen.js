@@ -1,19 +1,29 @@
 import React from 'react';
-import styled from 'styled-components';
+import MealList from '../components/MealList';
+import {MEALS} from '../data/dummy-data';
+import HeaderButton from '../components/HeaderButton';
+import {HeaderButtons, Item} from 'react-navigation-header-buttons';
 
 const FavoritesScreen = props => {
-  return (
-    <Container>
-      <Text>Favorites Screen!</Text>
-    </Container>
-  );
+  const favMeals = MEALS.filter(meal => meal.id === 'm1' || meal.id === 'm8');
+  return <MealList listData={favMeals} navigation={props.navigation} />;
 };
 
-const Container = styled.View`
-  flex: 1;
-  align-items: center;
-  justify-content: center;
-`;
-const Text = styled.Text``;
+FavoritesScreen.navigationOptions = navData => {
+  return {
+    headerTitle: 'Your Favorites',
+    headerLeft: (
+      <HeaderButtons HeaderButtonComponent={HeaderButton}>
+        <Item
+          title="Menu"
+          iconName="navicon"
+          onPress={() => {
+            navData.navigation.toggleDrawer();
+          }}
+        />
+      </HeaderButtons>
+    ),
+  };
+};
 
 export default FavoritesScreen;
