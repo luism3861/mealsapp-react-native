@@ -3,7 +3,7 @@ import {FlatList} from 'react-native';
 import styled from 'styled-components';
 import MealItem from './MealItem';
 
-const MealList = (props) => {
+const MealList = props => {
   const renderMealItem = itemData => {
     return (
       <MealItem
@@ -15,6 +15,7 @@ const MealList = (props) => {
         onSelectMeal={() => {
           props.navigation.navigate('MealDetail', {
             mealId: itemData.item.id,
+            mealTitle: itemData.item.title,
           });
         }}
       />
