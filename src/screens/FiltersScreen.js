@@ -72,7 +72,7 @@ FiltersScreen.navigationOptions = navData => {
       <HeaderButtons HeaderButtonComponent={HeaderButton}>
         <Item
           title="Menu"
-          iconName="navicon"
+          iconName="md-menu"
           color="black"
           onPress={() => {
             navData.navigation.toggleDrawer();
@@ -84,7 +84,7 @@ FiltersScreen.navigationOptions = navData => {
       <HeaderButtons HeaderButtonComponent={HeaderButton}>
         <Item
           title="Save"
-          iconName="save"
+          iconName="ios-save"
           color="black"
           onPress={navData.navigation.getParam('save')}
         />

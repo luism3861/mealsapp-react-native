@@ -16,7 +16,7 @@ FavoritesScreen.navigationOptions = navData => {
       <HeaderButtons HeaderButtonComponent={HeaderButton}>
         <Item
           title="Menu"
-          iconName="navicon"
+          iconName="md-menu"
           onPress={() => {
             navData.navigation.toggleDrawer();
           }}
